@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jim Achterberg - ML Researcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #ffffff;
+        }
+        header {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(45deg, #ff6b6b, #6b6bff);
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .publications {
+            margin-top: 20px;
+        }
+        .publications li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jim Achterberg</h1>
+        <p>Machine Learning Researcher | Academic</p>
+    </header>
+    <div class="container">
+        <h2>About Me</h2>
+        <p>PhD candidate in Machine Learning, working on generative models, representation learning, and statistical methods.</p>
+        
+        <h2>Publications</h2>
+        <ul class="publications">
+            <li>Loading publications...</li>
+        </ul>
+    </div>
+    
+    <script>
+        async function fetchPublications() {
+            try {
+                let response = await fetch('https://scholar.google.com/citations?user=kLOtQTUAAAAJ&hl=en');
+                let text = await response.text();
+                // Extract publications here (parsing required, or use a backend API)
+            } catch (error) {
+                console.error('Failed to load publications', error);
+            }
+        }
+        
+        fetchPublications();
+    </script>
+</body>
+</html>
