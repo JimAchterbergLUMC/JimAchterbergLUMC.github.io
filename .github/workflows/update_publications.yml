@@ -22,10 +22,13 @@ jobs:
       - name: Fetch Publications
         run: python fetch_scholar.py
 
-      - name: Commit & Push Changes
+      - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{secrets.GH_PATH}}
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git remote set-url origin https://JimAchterbergLUMC:${GITHUB_TOKEN}@github.com/JimAchterbergLUMC/JimAchterbergLUMC.github.io.git
           git add publications.json
-          git commit -m 'Update publications' || exit 0
-          git push
+          git commit -m "Updated publications.json from Google Scholar" || exit 0
+          git push origin main
