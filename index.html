@@ -54,14 +54,21 @@
     <script>
         async function fetchPublications() {
             try {
-                let response = await fetch('https://scholar.google.com/citations?user=kLOtQTUAAAAJ&hl=en');
-                let text = await response.text();
-                // Extract publications here (parsing required, or use a backend API)
+                let response = await fetch('publications.json');
+                let publications = await response.json();
+                let list = document.querySelector('.publications');
+                list.innerHTML = "";
+
+                publications.forEach(pub => {
+                    let item = document.createElement("li");
+                    item.innerHTML = `<a href="${pub.link}" target="_blank">${pub.title} (${pub.year})</a>`;
+                    list.appendChild(item);
+                });
             } catch (error) {
                 console.error('Failed to load publications', error);
             }
         }
-        
+
         fetchPublications();
     </script>
 </body>
