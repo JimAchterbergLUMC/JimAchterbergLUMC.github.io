@@ -14,7 +14,7 @@ jobs:
       - name: Set Up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: Install Dependencies
         run: pip install scholarly
@@ -24,11 +24,14 @@ jobs:
 
       - name: Commit and push changes
         env:
-          GITHUB_TOKEN: ${{secrets.GH_PATH}}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git remote set-url origin https://JimAchterbergLUMC:${GITHUB_TOKEN}@github.com/JimAchterbergLUMC/JimAchterbergLUMC.github.io.git
+          
+          # Set the remote URL to use the personal access token
+          git remote set-url origin https://JimAchterbergLUMC:${{ secrets.GH_PAT }}@github.com/JimAchterbergLUMC/JimAchterbergLUMC.github.io.git
+          
           git add publications.json
           git commit -m "Updated publications.json from Google Scholar" || exit 0
           git push origin main
