@@ -54,7 +54,7 @@
     <script>
         async function fetchPublications() {
             try {
-                let response = await fetch('publications.json');
+                let response = await fetch('/publications.json');
                 let publications = await response.json();
                 let list = document.querySelector('.publications');
                 list.innerHTML = "";
