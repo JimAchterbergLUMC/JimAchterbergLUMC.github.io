@@ -1,7 +1,7 @@
 from scholarly import scholarly
 import json
 
-SCHOLAR_ID = "YOUR_SCHOLAR_ID"
+SCHOLAR_ID = "kLOtQTUAAAAJ"
 
 
 def fetch_publications():
